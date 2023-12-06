@@ -10,10 +10,11 @@ import { useNavigate } from 'react-router-dom';
 
 const FormularioRegistrarUsuario = () => {
 
-    const [nombres, setNombres] = useState('');
-    const [apellidos, setApellidos] = useState('');
+
     const [usuario, setUsuario] = useState('');
     const [contraseña, setContraseña] = useState('');
+    const [nombres, setNombres] = useState('');
+    const [apellidos, setApellidos] = useState('');
     const [deshabilitarBoton, setDeshabilitarBoton] = useState(false);
     const [errores, setErrores] = useState({});
 
@@ -36,18 +37,19 @@ const FormularioRegistrarUsuario = () => {
     const verificarDatos = async () => {
         let datosVacios = {}
 
-        if (nombres.length === 0) {
-            datosVacios.nombres = 'Introducir al menos un nombre';
-        }
-        if (apellidos.length === 0) {
-            datosVacios.apellidos = 'Introducir al menos un apellido';
-        }
         if (usuario.length === 0) {
             datosVacios.usuario = 'Introducir al menos un usuario';
         }
         if (contraseña.length === 0) {
             datosVacios.contraseña = 'Introducir al menos una contraseña'
         }
+        if (nombres.length === 0) {
+            datosVacios.nombres = 'Introducir al menos un nombre';
+        }
+        if (apellidos.length === 0) {
+            datosVacios.apellidos = 'Introducir al menos un apellido';
+        }
+
         setErrores(datosVacios);
 
         if (Object.entries(datosVacios).length === 0) {
@@ -96,7 +98,7 @@ const FormularioRegistrarUsuario = () => {
 
             <Form.Group className="mb-3">
                 <Form.Label style={{ color: "blue" }}>Contraseña</Form.Label>
-                <Form.Control type="text" onInput={cambiarContraseña} />
+                <Form.Control type="password" onInput={cambiarContraseña} />
                 {
                     errores.contraseña && (
                         <span style={{ color: "red" }}>

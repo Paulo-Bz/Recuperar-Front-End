@@ -6,7 +6,7 @@ import axios from "axios";
 import { Alert } from "react-bootstrap";
 import { useAuthContext } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
-import { guardarDatos, guardarToken } from '../utils/login';
+
 
 const Login = () => {
     const [usuario, setUsuario] = useState('');
