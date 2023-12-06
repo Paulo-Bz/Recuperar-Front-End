@@ -30,7 +30,7 @@ const Inicio = () => {
 
     return (
         <Card.Body>
-            {usuario ? ('Bienvenid@ ' + usuario.nombres) : 'No se inició sesión'}
+            {usuario ? ('Hola ' + usuario.nombres) : 'No se inició sesión'}
             <TablaDeDatos lista={lista} usuario={usuario} />
         </Card.Body>
     )

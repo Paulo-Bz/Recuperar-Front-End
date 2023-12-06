@@ -5,7 +5,7 @@ import {
     obtenerDatos,
     obtenerToken,
     limpiarLocalStorage,
-} from "../utils/login";
+} from "../utils/login.js";
 
 const AuthContext = createContext();
 const AuthProvider = (props) => {
