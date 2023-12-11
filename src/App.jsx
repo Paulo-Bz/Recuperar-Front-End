@@ -1,9 +1,8 @@
 import { RouterProvider } from "react-router-dom";
-
 import { AuthProvider } from "./context/AuthContext.jsx";
-import DefaultLayout from './layouts/defaultLayout.jsx';
-
+import DefaultLayout from "./layouts/defaultLayout.jsx";
 import { rutas } from './router.jsx';
+
 
 const App = () => {
   return (

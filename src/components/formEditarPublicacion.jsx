@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react';
-
-
+import axios from 'axios';
 import Form from 'react-bootstrap/Form';
-
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-
 import { traerDatosDePublicacionPorID } from './../utils/llamados.js';
 
 const FormularioEditar = (props) => {
@@ -33,10 +29,10 @@ const FormularioEditar = (props) => {
         let datosVacios = {}
 
         if (titulo.length === 0) {
-            datosVacioss.titulo = 'Debe introducir al menos un titulo.';
+            datosVacios.titulo = 'Debe introducir al menos un titulo.';
         }
 
-        if (descripcion.length === 0) {
+        if (contenido.length === 0) {
             datosVacios.contenido = 'Debe introducir al menos una descripcion.';
         }
 

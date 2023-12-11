@@ -1,11 +1,12 @@
-import { CardBody } from "react-bootstrap";
+import axios from "axios";
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import { useState } from "react";
-import axios from "axios";
-import { Alert } from "react-bootstrap";
-import { useAuthContext } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from '../context/AuthContext';
+
 
 
 const Login = () => {
@@ -69,7 +70,7 @@ const Login = () => {
 
     return (
 
-        <CardBody>
+        <Card.Body>
             <Form>
                 <Form.Group className="mb-3" controlId="usuario">
                     <Form.Label>Usuario</Form.Label>
@@ -105,7 +106,7 @@ const Login = () => {
                     Ingresar
                 </Button>
             </Form>
-        </CardBody>
+        </Card.Body>
     )
 }
 

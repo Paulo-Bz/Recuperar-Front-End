@@ -1,9 +1,13 @@
-import { Table, Button, ButtonGroup } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useNavigate } from 'react-router-dom';
 
 
 const TablaDeDatos = (props) => {
+
     const { lista, usuario } = props;
+
     const navigate = useNavigate();
 
     const ver = (id) => {
@@ -34,16 +38,19 @@ const TablaDeDatos = (props) => {
                         <tr key={key}>
                             <td>{key + 1}</td>
                             <td>{item.titulo}</td>
-                            <td>{item.autor.apellidos + ' ' + item.autor.nombres}</td>
+                            <td>{item.autor.nombres + ' ' + item.autor.apellidos}</td>
                             <td>
                                 <ButtonGroup>
                                     <Button variant="info" onClick={() => ver(item._id)}>Ver</Button>
-                                    {usuario && (usuario.id === item.autor._id) && (
-                                        <>
-                                            <Button variant="success" onClick={() => editar(item._id)}>Editar</Button>
-                                            <Button variant="warning" onClick={() => eliminar(item._id)}>Eliminar</Button>
-                                        </>
-                                    )}
+
+                                    {
+                                        usuario && (usuario.id === item.autor._id) && (
+                                            <>
+                                                <Button variant="success" onClick={() => editar(item._id)}>Editar</Button>
+                                                <Button variant="warning" onClick={() => eliminar(item._id)}>Eliminar</Button>
+                                            </>
+                                        )
+                                    }
                                 </ButtonGroup>
                             </td>
                         </tr>
@@ -54,5 +61,4 @@ const TablaDeDatos = (props) => {
     );
 }
 
-
-export default TablaDeDatos;
+export default TablaDeDatos

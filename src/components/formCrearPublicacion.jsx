@@ -1,7 +1,10 @@
-import { useState } from 'react';
-
-import { Col, Form, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from '../context/AuthContext';
 
@@ -73,7 +76,7 @@ const FormularioCrearPublicacion = () => {
         <Form>
             <Form.Group as={Row} className="mb-3">
                 <Form.Label column sm="2">
-                    Título
+                    Titulo
                 </Form.Label>
                 <Col sm="10">
                     <Form.Control type="text" onInput={cambiarTitulo} />

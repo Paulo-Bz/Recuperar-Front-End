@@ -15,28 +15,28 @@ const rutas = createBrowserRouter([
         element: <Inicio />,
     },
     {
-        path: "/register",
-        element: <RegistrarUsuario />,
-    },
-    {
-        path: "/eliminar/:id",
-        element: <EliminarPublicacion />,
-    },
-    {
-        path: "/editar/:id",
-        element: <Editar />,
-    },
-    {
-        path: "/Ver/:id",
-        element: <Ver />,
-    },
-    {
         path: "/login",
         element: <Login />,
     },
     {
         path: "/crear",
         element: <CrearPublicacion />,
+    },
+    {
+        path: "/register",
+        element: <RegistrarUsuario />,
+    },
+    {
+        path: "/Ver/:id",
+        element: <Ver />,
+    },
+    {
+        path: "/editar/:id",
+        element: <Editar />,
+    },
+    {
+        path: "/eliminar/:id",
+        element: <EliminarPublicacion />,
     },
 ]);
 

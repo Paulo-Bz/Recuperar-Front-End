@@ -1,7 +1,9 @@
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { CardBody, Card, FloatingLabel, Form } from "react-bootstrap";
-import { useParams } from 'react-router-dom';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { traerDatosDePublicacionPorID, traerComentariosDePublicacionPorID } from '../utils/llamados.js';
 import { useAuthContext } from '../context/AuthContext.jsx';
 
@@ -27,7 +29,7 @@ const Ver = () => {
         }
     }
     const traerComentarios = async () => {
-        const respuesta = await traerComentariosDePosteo(id)
+        const respuesta = await traerComentariosDePublicacionPorID(id)
 
         if (respuesta) {
             setComentarios(respuesta)
@@ -70,7 +72,7 @@ const Ver = () => {
 
 
     return (
-        <CardBody style={{ backgroundImage: `url(https://www.kedin.es/wp-content/uploads/2018/09/imagenes-gratis.jpg)` }}>
+        <Card.Body style={{ backgroundImage: `url(https://www.kedin.es/wp-content/uploads/2018/09/imagenes-gratis.jpg)` }}>
             <Card className="text-center">
                 <Card.Body>
                     <Card.Title>{titulo}</Card.Title>
@@ -129,7 +131,7 @@ const Ver = () => {
                     </Card>
                 </Card.Body>
             </Card>
-        </CardBody>
+        </Card.Body>
     );
 }
 

@@ -1,10 +1,9 @@
+import Card from 'react-bootstrap/Card';
 import { useState, useEffect } from 'react';
-import { Card } from 'react-bootstrap';
-//import axios from 'axios';
-
 import { useAuthContext } from '../context/AuthContext.jsx';
-
 import TablaDeDatos from '../components/tablaDeDatos.jsx';
+
+
 
 const Inicio = () => {
     const [lista, setLista] = useState([]);

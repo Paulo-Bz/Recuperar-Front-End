@@ -1,9 +1,8 @@
-import { Card } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 import { useParams } from "react-router-dom";
-
 import { useAuthContext } from '../context/AuthContext.jsx';
-
 import FormularioEditar from '../components/formEditarPublicacion.jsx';
+
 
 const Editar = () => {
     const { id } = useParams();

@@ -1,5 +1,4 @@
-import { Card } from 'react-bootstrap';
-
+import Card from 'react-bootstrap/Card';
 import MyNavbar from '../components/navbar';
 
 const DefaultLayout = (props) => {

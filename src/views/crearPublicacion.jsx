@@ -1,5 +1,4 @@
-import { Card } from 'react-bootstrap';
-
+import Card from 'react-bootstrap/Card';
 import FormularioCrearPublicacion from '../components/formCrearPublicacion';
 
 const CrearPublicacion = () => {

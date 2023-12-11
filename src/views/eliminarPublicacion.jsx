@@ -1,5 +1,7 @@
 import Alert from 'react-bootstrap/Alert';
-import { Button, ButtonGroup, CardBody } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
@@ -37,7 +39,7 @@ const EliminarPublicacion = () => {
     return (
 
 
-        <CardBody>
+        <Card.Body>
             <Alert style={{ borderColor: "red", fontSize: 25, textAlign: "center" }} variant="warning">
                 ¿Esta seguro que desea eliminar la publicacion con este ID? {id}
             </Alert>
@@ -54,7 +56,7 @@ const EliminarPublicacion = () => {
                     </Button>
                 </ButtonGroup>
             </div>
-        </CardBody>
+        </Card.Body>
 
 
     )
