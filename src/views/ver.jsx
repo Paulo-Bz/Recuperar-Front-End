@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { traerDatosDePublicacionPorID, traerComentariosDePublicacionPorID } from '../utils/llamados.js';
 import { useAuthContext } from '../context/AuthContext.jsx';
+import { Container } from 'react-bootstrap';
 
 const Ver = () => {
     const { id } = useParams();
@@ -73,64 +74,65 @@ const Ver = () => {
 
     return (
         <Card.Body style={{ backgroundImage: `url(https://www.kedin.es/wp-content/uploads/2018/09/imagenes-gratis.jpg)` }}>
-            <Card className="text-center">
-                <Card.Body>
-                    <Card.Title>{titulo}</Card.Title>
-                    <Card.Text>
-                        {contenido}
-                    </Card.Text>
-                    <Button variant="primary">Editar</Button>
-                </Card.Body>
-            </Card>
+            <Container style={{ marginBlock: '300px' }}>
+                <Card style={{ fontSize: '25px' }} className="text-center">
+                    <Card.Body style={{ backgroundColor: 'aliceblue' }}>
+                        <Card.Title>{titulo}</Card.Title>
+                        <Card.Text>
+                            {contenido}
+                        </Card.Text>
+                        <Button variant="primary">Editar</Button>
+                    </Card.Body>
+                </Card>
 
-            <br />
+                <br />
 
-            <Card className="text-center">
-                <Card.Header>Comentarios</Card.Header>
-                <Card.Body>
+                <Card className="text-center">
+                    <Card.Header>Comentarios</Card.Header>
+                    <Card.Body>
 
 
-                    {
-                        comentarios.map((comentario, key) => (
-                            <div key={key}>
+                        {
+                            comentarios.map((comentario, key) => (
+                                <div key={key}>
 
-                                <Card className="text-center">
-                                    <Card.Body>
-                                        <Card.Title>{comentario.autor.apellidos + ' ' + comentario.autor.nombres}</Card.Title>
-                                        <Card.Text>
-                                            {comentario.contenido}
-                                        </Card.Text>
-                                        <Button variant="primary">Editar comentario</Button>
-                                        <Button variant="primary">Eliminar comentario</Button>
-                                    </Card.Body>
-                                </Card>
+                                    <Card className="text-center">
+                                        <Card.Body>
+                                            <Card.Title>{comentario.autor.apellidos + ' ' + comentario.autor.nombres}</Card.Title>
+                                            <Card.Text>
+                                                {comentario.contenido}
+                                            </Card.Text>
+                                            <Button variant="primary">Editar comentario</Button>
+                                            <Button variant="warning">Eliminar comentario</Button>
+                                        </Card.Body>
+                                    </Card>
+                                    <br />
+                                </div>
+                            ))
+                        }
+                        <br />
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Agregar Comentario</Card.Title>
                                 <br />
-                            </div>
-                        ))
-                    }
-                    <br />
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Agregar Comentario</Card.Title>
-                            <br />
-                            <FloatingLabel controlId="comentario" label="Comentario">
-                                <Form.Control
-                                    onInput={(e) => setMiComentario(e.target.value)}
-                                    value={miComentario}
-                                    as="textarea"
-                                    placeholder="Ingrese un comentario"
-                                    style={{ height: '100px' }}
-                                />
-                            </FloatingLabel>
-                            <br />
-
-                            <Button variant="primary" onClick={enviarComentario}>
-                                Agregar
-                            </Button>
-                        </Card.Body>
-                    </Card>
-                </Card.Body>
-            </Card>
+                                <FloatingLabel controlId="comentario" label="Comentario">
+                                    <Form.Control
+                                        onInput={(e) => setMiComentario(e.target.value)}
+                                        value={miComentario}
+                                        as="textarea"
+                                        placeholder="Ingrese un comentario"
+                                        style={{ height: '50px' }}
+                                    />
+                                </FloatingLabel>
+                                <br />
+                                <Button variant="primary" onClick={enviarComentario}>
+                                    Agregar
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Card.Body>
+                </Card>
+            </Container>
         </Card.Body>
     );
 }

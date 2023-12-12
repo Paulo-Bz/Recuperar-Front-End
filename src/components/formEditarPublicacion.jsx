@@ -17,6 +17,7 @@ const FormularioEditar = (props) => {
 
     const navigate = useNavigate();
 
+
     const cambiarTitulo = (e) => {
         setTitulo(e.target.value);
     }
@@ -81,7 +82,7 @@ const FormularioEditar = (props) => {
                 }
 
                 setTitulo(respuesta.titulo);
-                setDescripcion(respuesta.contenido);
+                setContenido(respuesta.contenido);
             } else {
                 setErrores({ error: 'Ocurrió un error inesperado. No se pudo obtener la publicación' });
                 setDeshabilitarBoton(true);

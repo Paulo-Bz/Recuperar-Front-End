@@ -6,7 +6,6 @@ import FormularioEditar from '../components/formEditarPublicacion.jsx';
 
 const Editar = () => {
     const { id } = useParams();
-
     const { token, usuario } = useAuthContext();
 
     return (
