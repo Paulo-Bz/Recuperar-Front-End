@@ -75,7 +75,7 @@ const FormularioCrearPublicacion = () => {
     return (
         <Form>
             <Form.Group as={Row} className="mb-3">
-                <Form.Label column sm="2">
+                <Form.Label style={{ color: "blue" }} column sm="2">
                     Titulo
                 </Form.Label>
                 <Col sm="10">
@@ -91,7 +91,7 @@ const FormularioCrearPublicacion = () => {
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
-                <Form.Label column sm="2">
+                <Form.Label style={{ color: "blue" }} column sm="2">
                     Contenido
                 </Form.Label>
                 <Col sm="10">

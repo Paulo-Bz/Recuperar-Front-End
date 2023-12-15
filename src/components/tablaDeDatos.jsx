@@ -23,13 +23,13 @@ const TablaDeDatos = (props) => {
     }
 
     return (
-        <Table striped bordered hover variant="clar">
+        <Table striped bordered hover variant="clar" >
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Titulo</th>
-                    <th>Autor</th>
-                    <th>Acciones</th>
+                    <th>TITULO</th>
+                    <th>AUTOR</th>
+                    <th>ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
