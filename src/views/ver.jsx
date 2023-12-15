@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -7,14 +8,27 @@ import { useParams } from 'react-router-dom';
 import { traerDatosDePublicacionPorID, traerComentariosDePublicacionPorID } from '../utils/llamados.js';
 import { useAuthContext } from '../context/AuthContext.jsx';
 import { Container } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
+
+
 
 const Ver = () => {
     const { id } = useParams();
+
     const [titulo, setTitulo] = useState('');
     const [contenido, setContenido] = useState('');
     const [comentarios, setComentarios] = useState([]);
     const [miComentario, setMiComentario] = useState('');
     const { token } = useAuthContext();
+    const navigate = useNavigate();
+
+    const editar = (id) => {
+        navigate('/editarComentario/' + id);
+    }
+
+    const eliminar = (id) => {
+        navigate('/eliminarComentario/' + id);
+    }
 
 
     const traerDatos = async () => {
@@ -40,8 +54,9 @@ const Ver = () => {
     }
 
 
+
     const enviarComentario = async () => {
-        const url = 'http://localhost:3000/comentarios'
+        const url = 'http://localhost:3000/comentario'
 
 
         const datos = {
@@ -74,14 +89,13 @@ const Ver = () => {
 
     return (
         <Card.Body style={{ backgroundImage: `url(https://www.kedin.es/wp-content/uploads/2018/09/imagenes-gratis.jpg)` }}>
-            <Container style={{ marginBlock: '300px' }}>
-                <Card style={{ fontSize: '25px' }} className="text-center">
+            <Container style={{ marginBlock: '100px' }}>
+                <Card style={{ fontSize: '30px' }} className="text-center">
                     <Card.Body style={{ backgroundColor: 'aliceblue' }}>
                         <Card.Title>{titulo}</Card.Title>
                         <Card.Text>
                             {contenido}
                         </Card.Text>
-                        <Button variant="primary">Editar</Button>
                     </Card.Body>
                 </Card>
 
@@ -102,8 +116,13 @@ const Ver = () => {
                                             <Card.Text>
                                                 {comentario.contenido}
                                             </Card.Text>
-                                            <Button variant="primary">Editar comentario</Button>
-                                            <Button variant="warning">Eliminar comentario</Button>
+                                            {
+                                                contenido && (contenido.id === comentario.autor_id) && (
+                                                    <>
+                                                        <Button variant="success" onClick={() => editar(comentario._id)}>Editar</Button>
+                                                        <Button variant="warning" onClick={() => eliminar(comentario._id)}>Eliminar</Button>
+                                                    </>
+                                                )}
                                         </Card.Body>
                                     </Card>
                                     <br />

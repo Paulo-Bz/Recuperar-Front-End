@@ -4,23 +4,19 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { traerDatosDePublicacionPorID } from './../utils/llamados.js';
+import { traerComentarioDePublicacionPorID } from "../utils/llamados";
 
-const FormularioEditar = (props) => {
-    const { id, usuario, token } = props;
-    const url = 'http://localhost:3000/publicacion';
+const FormularioEditarComentario = (props) => {
+    const { id, token } = props;
+    const url = 'http://localhost:3000/comentario';
 
-    const [titulo, setTitulo] = useState('');
+
     const [contenido, setContenido] = useState('');
     const [deshabilitarBoton, setDeshabilitarBoton] = useState(false);
     const [errores, setErrores] = useState({});
 
     const navigate = useNavigate();
 
-
-    const cambiarTitulo = (e) => {
-        setTitulo(e.target.value);
-    }
 
     const cambiarContenido = (e) => {
         setContenido(e.target.value);
@@ -29,14 +25,9 @@ const FormularioEditar = (props) => {
     const verificarDatos = async () => {
         let datosVacios = {}
 
-        if (titulo.length === 0) {
-            datosVacios.titulo = 'Debe introducir al menos un titulo.';
-        }
-
         if (contenido.length === 0) {
-            datosVacios.contenido = 'Debe introducir al menos una descripcion.';
+            datosVacios.contenido = 'Debe introducir al menos un contenido.';
         }
-
         setErrores(datosVacios);
 
         if (Object.entries(datosVacios).length === 0) {
@@ -49,7 +40,6 @@ const FormularioEditar = (props) => {
     const mandarDatos = async () => {
         const datos = {
             id: id,
-            titulo: titulo,
             contenido: contenido,
         }
 
@@ -62,11 +52,12 @@ const FormularioEditar = (props) => {
 
             if (respuesta.status === 200) {
                 return navigate('/');
+
             } else {
-                setErrores({ error: 'Ocurrió un error inesperado' });
+                setErrores({ error: 'Ocurrio un error' });
             }
         } catch (error) {
-            setErrores({ error: 'Ocurrió un error inesperado' });
+            setErrores({ error: 'No esta autorizado a editar este contenido' });
         }
 
         setDeshabilitarBoton(false);
@@ -74,37 +65,30 @@ const FormularioEditar = (props) => {
 
     const traerDatos = async () => {
         if (usuario) {
-            const respuesta = await traerDatosDePublicacionPorID(id);
+            const respuesta = await traerComentarioDePublicacionPorID(id);
 
             if (respuesta) {
                 if (usuario.id !== respuesta.autor) {
                     return navigate('/');
                 }
 
-                setTitulo(respuesta.titulo);
                 setContenido(respuesta.contenido);
+
             } else {
-                setErrores({ error: 'Ocurrió un error no se pudo obtener la publicación' });
+                setErrores({ error: 'Ocurrió un error inesperado. No se pudo obtener el comentario' });
                 setDeshabilitarBoton(true);
             }
         } else {
             return navigate('/');
         }
-    }
 
+    }
     useEffect(() => {
         traerDatos();
     }, []);
 
     return (
         <Form>
-            <Form.Group className="mb-3">
-                <Form.Label style={{ color: "blue" }}>Titulo</Form.Label>
-                <Form.Control type="text" onInput={cambiarTitulo} defaultValue={titulo} />
-                {
-                    errores.titulo && (<span style={{ color: "red" }}>{errores.titulo}</span>)
-                }
-            </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label style={{ color: "blue" }}>Contenido</Form.Label>
                 <Form.Control type="text" onInput={cambiarContenido} defaultValue={contenido} />
@@ -115,7 +99,7 @@ const FormularioEditar = (props) => {
             {
                 errores.error && (<Alert variant="warning">{errores.error}</Alert>)
             }
-            <Button variant="primary" onClick={verificarDatos} disabled={deshabilitarBoton}>Editar Publicacion</Button>
+            <Button variant="primary" onClick={verificarDatos} disabled={deshabilitarBoton}>Editar Comentario</Button>
             {
                 deshabilitarBoton ? 'Datos Enviados' : 'Esperando enviar datos'
             }
@@ -123,4 +107,4 @@ const FormularioEditar = (props) => {
     );
 }
 
-export default FormularioEditar;
+export default FormularioEditarComentario;
