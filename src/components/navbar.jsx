@@ -25,9 +25,17 @@ const MyNavbar = () => {
                             <>
 
                                 <Nav.Link href="/login">Iniciar Sesión</Nav.Link>
+
+
+                                <br>
+
+                                </br>
+
+
                                 <Nav.Link href="/register">Registrar Usuario</Nav.Link>
 
                             </>
+
                         )
                     }
                 </Nav>

@@ -73,7 +73,7 @@ const Login = () => {
         <Card.Body>
             <Form>
                 <Form.Group className="mb-3" controlId="usuario">
-                    <Form.Label>Usuario</Form.Label>
+                    <Form.Label style={{ color: "blue" }}>Usuario</Form.Label>
                     <Form.Control type="text" placeholder="Usuario" onInput={cambiarUsuario} />
                     {
                         errores.usuario && (
@@ -84,7 +84,7 @@ const Login = () => {
 
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="contraseña">
-                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Label style={{ color: "blue" }}>Contraseña</Form.Label>
                     <Form.Control type="password" placeholder="Contraseña" onInput={cambiarContraseña} />
                     {
                         errores.contraseña && (

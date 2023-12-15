@@ -136,7 +136,7 @@ const FormularioRegistrarUsuario = () => {
 
             <Button variant="primary" onClick={verificarDatos} disabled={deshabilitarBoton}>Registrar Usuario</Button>
             {
-                deshabilitarBoton ? 'Datos Enviados' : 'Esperando enviar datos'
+                deshabilitarBoton ? 'Datos Enviados' : 'Esperando enviar datos....'
             }
 
         </Form>
